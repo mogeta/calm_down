@@ -1,0 +1,40 @@
+body,td,th  {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.out {
+    display: table;
+    width: 100vw;
+    height: 100vh;
+    background-color:floralwhite;
+}
+
+.out_img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header{
+    height: 20vh;
+}
+
+.footer {
+
+}
+
+.list {
+    font-size: 5vh;
+}
+
+.counter {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30vh;
+}
+
+.string {
+    font-size: 80px;
+    color: #FFFFFF;
+}

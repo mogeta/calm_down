@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>WebSocket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1 class="title">
+    トゲトゲワードカウンター起動中
+</h1>
+<div class="container counter">
+
+    <p id="output" class=""></p>
+</div>
+<div id="wordlist" class="list">
+
+</div>
+<script>
+    var loc = window.location;
+    var uri = 'ws:';
+
+    if (loc.protocol === 'https:') {
+        uri = 'wss:';
+    }
+    uri += '//' + loc.host;
+    uri += loc.pathname + 'ws';
+
+    ws = new WebSocket(uri)
+
+    ws.onopen = function () {
+        console.log('Connected')
+    }
+
+    ws.onmessage = function (evt) {
+        const out = document.getElementById('output');
+        const list = document.getElementById('wordlist');
+
+        data = JSON.parse(evt.data);
+        out.innerHTML = data["count"] + '<br>';
+
+        list.insertAdjacentHTML('afterbegin',data["count"] +":"+ data["wrong_word"]);
+        var insetElement = document.createElement('br');
+        list.insertAdjacentElement('afterbegin', insetElement);
+    }
+    // ws.send('Hello, Server!');
+    setInterval(function() {
+        ws.send('Hello, Server!');
+    }, 1000);
+</script>
+</body>
+
+</html>
