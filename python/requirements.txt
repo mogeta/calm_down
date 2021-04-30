@@ -14,7 +14,7 @@ pyasn1-modules==0.2.8
 PyAudio==0.2.11
 pytz==2020.1
 requests==2.24.0
-rsa==4.6
+rsa==4.7
 six==1.15.0
 speech==0.5.2
 termcolor==1.1.0
